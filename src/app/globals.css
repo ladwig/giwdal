@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Neopixel Regular font */
+@font-face {
+  font-family: 'Neopixel';
+  src: url('/fonts/neopixel-regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: #000000;
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+.main {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  position: relative;
+}
+
+.background-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0;
+  animation: fadeIn 1s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.name-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4rem;
+}
+
+.name-text {
+  font-family: 'Neopixel', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  font-size: 3rem;
+  font-weight: normal;
+  color: #ffffff;
+  text-align: center;
+  margin: 0;
+  letter-spacing: 0.02em;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 2s ease-out 0.5s forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.star-top, .star-bottom {
+  opacity: 0;
+  animation: fadeIn 1.5s ease-out 1s forwards;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+}
+
+.star-top {
+  transform: translateY(-10px);
+  animation: fadeInDown 1.5s ease-out 1s forwards;
+}
+
+.star-bottom {
+  transform: translateY(10px);
+  animation: fadeInUp 1.5s ease-out 1s forwards;
+}
+
+@keyframes fadeInDown {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.corner-links {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  display: flex;
+  gap: 1.5rem;
+  z-index: 2;
+  opacity: 0;
+  animation: fadeIn 1.5s ease-out 2s forwards;
+}
+
+.corner-link {
+  font-family: 'Neopixel', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  letter-spacing: 0.01em;
+}
+
+.corner-link:hover {
+  color: #ffffff;
+  text-shadow: 0 2px 8px rgba(255, 255, 255, 0.3);
+}
+
+
+
+/* Responsive Design */
+@media (max-width: 640px) {
+  .name-text {
+    font-size: 2rem;
+  }
+  
+  .name-overlay {
+    gap: 3rem;
+  }
+  
+  .star-top, .star-bottom {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .corner-links {
+    bottom: 2rem;
+    right: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    gap: 2rem;
+    justify-content: center;
+  }
+  
+  .corner-link {
+    font-size: 1rem;
+    padding: 0.75rem 1rem;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+} 
